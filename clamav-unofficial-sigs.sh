@@ -1022,6 +1022,8 @@ if [ -n "$sanesecurity_dbs" ] ; then
                            if rsync -pcqt $sanesecurity_dir/$db_file $clam_dbs
                               then
                                  perms chown $clam_user:$clam_group $clam_dbs/$db_file
+                                 restorecon $clam_dbs/$db_file
+                                 log "INFO - Successfully restored the se_context of  Sanesecurity production database file: $db_file"
                                  comment "Successfully updated Sanesecurity production database file: $db_file"
                                  log "INFO - Successfully updated Sanesecurity production database file: $db_file"
                                  sanesecurity_update=1
@@ -1050,6 +1052,8 @@ if [ -n "$sanesecurity_dbs" ] ; then
                            if rsync -pcqt $test_dir/$db_file $clam_dbs
                               then
                                  perms chown $clam_user:$clam_group $clam_dbs/$db_file
+                                 restorecon $clam_dbs/$db_file
+                                 log "INFO - Successfully restored the se_context of  Sanesecurity production database file: $db_file"
                                  comment "Successfully updated Sanesecurity production database file: $db_file"
                                  log "INFO - Successfully updated Sanesecurity production database file: $db_file"
                                  sanesecurity_update=1
